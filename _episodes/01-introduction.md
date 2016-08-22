@@ -38,7 +38,19 @@ meaningful. Usually, image data will have 2 or 3 dimensions, corresponding to
 the 3 spatial dimensions or 2D projection: either from a specific view-point
 (think photographs) or through a 3D object (think slice). But it is possible to
 use image processing algorithms in cases in which there are more dimensions, and
-where the dimensions do not correspond to the spatial dimensions (does anyone
+where the dimensions do not correspond to the spatial dimensions
+
+> ## What is a good example of pseudo-image data?
+>
+> - In radio-astronomy, Fourier spectra are analyzed using image-processing
+>   methods
+> - In a project recently undertaken in the [University of Washington eScience Institute Data Science Incubator Program](http://escience.washington.edu/get-involved/incubator-programs/winter-2016/),
+> Siva Kasinathan used image-processing algorithms to characterize and
+< reassemble sequences from human chromosome centromeres
+>
+{: .discussion}
+
+(does anyone
 know a good example of this?)
 
 Note that these categories are also not mutually exclusive. For example,
@@ -74,20 +86,21 @@ some data from the Human Connectome Project.
 > The [Human Connectome Project](https://www.humanconnectome.org/) provides
 > high-quality functional, structural and diffusion MRI data. These can be
 > accessed through [AWS Simple Storage Service](https://aws.amazon.com/s3/),
-> or "S3". This allows us to programatically downlaod the data, through a
+> or "S3". This allows us to programatically download the data, through a
 > Python library called [`boto3`](https://github.com/boto/boto3).
 > For the following code to work, you need to have a file '~/.aws/credentials',
 > that includes a section:
 >
->   [hcp]
->   AWS_ACCESS_KEY_ID=XXXXXXXXXXXXXXXX
->  AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXX
+>     [hcp]
+>     AWS_ACCESS_KEY_ID=XXXXXXXXXXXXXXXX
+>     AWS_SECRET_ACCESS_KEY=XXXXXXXXXXXXXXXX
 >
-> The keys are credentials that you can get from [HCP] (https://wiki.humanconnectome.org/display/PublicData/How+To+Connect+to+Connectome+Data+via+AWS)
+> The keys are credentials that you can get from [Human Connectome Project](https://wiki.humanconnectome.org/display/PublicData/How+To+Connect+to+Connectome+Data+via+AWS)
 >
 > In addition, you'll need to install `boto3`. This can usually be done with the following command-line call:
 >
 >     pip install boto3
+{: .callout}
 
 First, we download the data to our computer from S3 using `boto3`.
 
@@ -123,6 +136,7 @@ memory using the `nibabel` library.
 > To install it, you can use the following command-line call:
 >
 >     pip install nibabel
+{: .callout}
 
 The `nibabel` API for reading data from file has two steps:
 
@@ -168,4 +182,13 @@ ax.matshow(T1w_data[:, :, T1w_data.shape[-1]//2])
 ~~~
 {: .python}
 
-Exercise
+
+> ## XXX
+>
+> XXX
+{: .challenge}
+
+> ## XXX
+>
+> XXX
+{: .solution}
