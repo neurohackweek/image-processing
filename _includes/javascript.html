@@ -10,4 +10,25 @@
 <script src="{{ root }}/assets/js/jquery.min.js"></script>
 <script src="{{ root }}/assets/js/bootstrap.min.js"></script>
 <script src="{{ root }}/assets/js/lesson.js"></script>
+
+
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script >
+// Setup MathJax
+MathJax.Hub.Config({
+    tex2jax: {
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    processEscapes: true
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    $(MathJax.Hub.getAllJax()).map(function(index, elem) {
+        return(elem.SourceElement());
+    }).parent().addClass('has-jax');
+});
+
+MathJax.Hub.Configured();
+</script>

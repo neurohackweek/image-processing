@@ -38,7 +38,8 @@ meaningful. Usually, image data will have 2 or 3 dimensions, corresponding to
 the 3 spatial dimensions or 2D projection: either from a specific view-point
 (think photographs) or through a 3D object (think slice). But it is possible to
 use image processing algorithms in cases in which there are more dimensions, and
-where the dimensions do not correspond to the spatial dimensions
+where the dimensions do not correspond to the spatial dimensions (does anyone
+know a good example of this?).
 
 > ## What is a good example of pseudo-image data?
 >
@@ -46,12 +47,10 @@ where the dimensions do not correspond to the spatial dimensions
 >   methods
 > - In a project recently undertaken in the [University of Washington eScience Institute Data Science Incubator Program](http://escience.washington.edu/get-involved/incubator-programs/winter-2016/),
 > Siva Kasinathan used image-processing algorithms to characterize and
-< reassemble sequences from human chromosome centromeres
+< reassemble sequences from human chromosome centromeres.
 >
 {: .discussion}
 
-(does anyone
-know a good example of this?)
 
 Note that these categories are also not mutually exclusive. For example,
 functional MRI data is image data, but is also time-series data at the same
@@ -60,7 +59,6 @@ time.
 #### Some common image processing operations
 
 There are many different kinds of image processing operations. Here are a few common operations:
-
 
 - Filtering
   - Detrending
@@ -119,7 +117,7 @@ After running this code, we should have T1-weighted MRI scan of this subject
 stored in the file `991267-T1w_acpc_dc.nii.gz`. We can read this file into
 memory using the `nibabel` library.
 
-> ## Nibabel: harnesssing the cacophony of neuroimaging file
+> ## Nibabel: accessing a cacophony of neuroimaging file formats
 >
 > One of the challenges of data science in neuroimaging (and in other
 > scientific fields) is the range of different file formats that are used to
@@ -183,12 +181,40 @@ ax.matshow(T1w_data[:, :, T1w_data.shape[-1]//2])
 {: .python}
 
 
-> ## XXX
+> ## The nibabel header
 >
-> XXX
+> Explore the 'T1w_img' object. How would you extract information about the
+> parameters used to collect data? What information is missing?
+>
 {: .challenge}
 
-> ## XXX
+> ## The nibabel header
+>  
+> Information about the acquisition can be accessed using the image header:
 >
-> XXX
+>     hdr = T1w_img.get_header()
+>
+> For example:
+>
+>     affine = hdr.get_zooms()
+>
+> will usually provide the dimensions of the voxel (how do we know the units?)
+>
+> Some information might be missing from the file header (or not make sense).
+> For example, try running:
+>
+>     hdr.get_n_slices()
+>
 {: .solution}
+>
+>
+
+> ## Affine transforms
+>
+> The nibabel image header also contains the affine transformation between the
+> image and a standard space (usually the scanner iso-center in mm). For more
+> information on how and why this information is used, you might want to refer
+> to [this excellent tutorial in the nibabel documentation](http://nipy.org/nibabel/coordinate_systems.html).
+>
+>
+{: .callout}
