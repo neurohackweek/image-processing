@@ -101,9 +101,13 @@ That is becauase:
 
 $$\sigma^2 = \sigma^2_w + \sigma^2_b$$
 
-That's because the sum of squares is always constant.
+That's because the sum of squares is always constant:
 
-$$\sigma^2_b = \sigma^2 - \sigma^2_w = w_1 (\mu_1 - \mu)^2 + w_2 (\mu_2 - \mu)^2 = w_1 w_2 (\mu_1 - \mu_2)^2$$
+$$\sigma^2_b = \sigma^2 - \sigma^2_w$$
+
+The inter-class variance can be written as:
+
+$$w_1 (\mu_1 - \mu)^2 + w_2 (\mu_2 - \mu)^2 = w_1 w_2 (\mu_1 - \mu_2)^2$$
 
 
 Where
@@ -112,14 +116,23 @@ $$\mu_1 = \sum_{i}^{t-1} \frac{i p(i)}{w_1}$$
 
 $$\mu_2 = \sum_{t}^{L-1} \frac{i p(i)}{w_2}$$
 
+The advantage of this formulation is that it can be written in code that can
+run fast.
 
-We set the class means for all possible thresholds:
+We start by setting the means of the background/foreground for all possible
+thresholds:
+
 ~~~
 # class means for all possible thresholds
 mean1 = np.cumsum(hist * bin_centers) / weight1
 mean2 = (np.cumsum((hist * bin_centers)[::-1]) / weight2[::-1])[::-1]
 ~~~
 {: .python}
+
+Plotting this:
+
+![means](../fig/segmentation02.png)
+
 
 And calculate the inter-class variance:
 
@@ -131,13 +144,13 @@ variance12 = weight1[:-1] * weight2[1:] * (mean1[:-1] - mean2[1:]) ** 2
 {: .python}
 
 
-Plotting this:
+
 ~~~
 fig, ax = plt.subplots(1)
 ax.plot(bin_centers[:-1] ,variance12)
 ~~~
 
-![Intraclass=variance](../fig/segmentation02.png)
+![Intraclass=variance](../fig/segmentation02_b.png)
 
 To find the threshold value that marks the distinction between the two classes
 we detect the maximum of this function:
