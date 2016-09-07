@@ -116,11 +116,14 @@ basis set comprising `x`, `y` and `z`.
 
 Next, we are going to make a simple assumption that in the lack of any spatial
 bias, the data would have a more-or-less constant value across space. That is,
-we assume that for unbiased data, $ \beta_1 = \beta_2 = \beta_3 = 0$. This seems
-like a strange assumption to make, but it makes sense when you think of the fact
-that we expect the brain to be more or less symmetrical (it's not supposed to be
-much brighter in any particular direction), and given the spatial scale of the
-functions we are using for debiasing.
+we assume that for unbiased data,
+
+$$\beta_1 = \beta_2 = \beta_3 = 0$$.
+
+This seems like a strange assumption to make, but it makes sense when you think
+of the fact that we expect the brain to be more or less symmetrical (it's not
+supposed to be much brighter in any particular direction), and given the spatial
+scale of the functions we are using for debiasing.
 
 Even if you feel uncomfortable with this assumption, you might want to remember
 that the T1-weighted measurement is just that: a non-quantitative weighted
