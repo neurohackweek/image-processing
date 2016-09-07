@@ -1,17 +1,17 @@
 ---
-title: "Filtering"
+title: "Registration"
 teaching: 15
 exercises: 0
 
 questions:
-- "What are image filtering operations, and how/when should we use them?"
+- "How do we register images of brains?"
 
 objectives:
-- "Use scikit-image filter functions"
+- "Understand what the SyN algorithm does to images"
 
 keypoints:
-- "Filtering operations are convolutions with a filter function"
-- "Filtering is a useful first step in many image processing pipelines"
+- "The SyN algorithm is a powerful algorithm for calculating diffeomorphic transformations between images"
+- "It's particularly useful for registering images of brains"
 ---
 
 Another operation that we often want to do with neuroimages is registration.

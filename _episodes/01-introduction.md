@@ -1,5 +1,5 @@
 ---
-title: "Introduction: what is image processing"
+title: "Introduction: what is image processing?"
 teaching: 15
 exercises: 1
 questions:
