@@ -14,7 +14,7 @@ objectives:
 - "Visualize image data with Matplotlib"
 
 keypoints:
-- "Image processing operatins are a central part of neuroimaging."
+- "Image processing operations are a central part of neuroimaging."
 - "Images are homogenous arrays, where spatial relationships are important"
 - "Many different operations can be performed on images, and processing pipelines can be build combining them"
 - "Images can be efficiently and usefully represented as arrays"
